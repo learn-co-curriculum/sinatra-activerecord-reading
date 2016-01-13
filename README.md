@@ -40,8 +40,27 @@ There are two ways in which we can read data. We may want to "read" or deliver t
 To implement the update action, we need a controller action that renders an update form and we need a controller action to catch the post request sent by that form. 
 
 * The `get 'models/:id/edit'` controller action will render the `edit.erb` view page. 
-* The `edit.erb` view page will contain the form for editing a given instance of a model. This form will send a `PATCH` request to `post '/models/:id'`. 
+* The `edit.erb` view page will contain the form for editing a given instance of a model. This form will send a `PATCH` request to `patch '/models/:id'`. 
 * The `patch '/models/:id'` controller action will find the instance of the model to update, using the `id` from `params`, update and save that instance. 
+
+We'll need to update `config.ru` to use the Sinatra Middleware that lets our app send `patch` requests.
+
+config.ru:
+```
+use Rack::MethodOverride
+run ApplicationController
+```
+
+From there, you'll need to add a line to your form:
+
+edit.erb:
+```html
+<form action="/models/:id" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <input type="text" ...>
+</form>
+```
+The `MethodOverride` middleware will intercept every request sent and received by our application. If it finds a request with `name="_method"`, it will set the request type based on what is set in the `value` attribute. In this case `patch`.
 
 ### Delete
 
@@ -54,7 +73,7 @@ The delete part of CRUD is a little tricky. It doesn't get its own view page, bu
 <form>
 ```
 
-The hidden input field is important to note here. You'll need to include a similar line on any edit forms. This is how you can submit PATCH and DELETE requests via Sinatra. The form tag `method` attribute will be set to `post`, but the hidden input field sets it to `DELETE`.
+The hidden input field is important to note here. This is how you can submit PATCH and DELETE requests via Sinatra. The form tag `method` attribute will be set to `post`, but the hidden input field sets it to `DELETE`.
 
 
 ### Conclusion
