@@ -40,18 +40,23 @@ There are two ways in which we can read data. We may want to "read" or deliver t
 To implement the update action, we need a controller action that renders an update form and we need a controller action to catch the post request sent by that form. 
 
 * The `get 'models/:id/edit'` controller action will render the `edit.erb` view page. 
-* The `edit.erb` view page will contain the form for editing a given instance of a model. This form will send a `POST` request to `post '/models/:id'`. 
-* The `post '/models/:id'` controller action will find the instance of the model to update, using the `id` from `params`, update and save that instance. 
+* The `edit.erb` view page will contain the form for editing a given instance of a model. This form will send a `PATCH` request to `post '/models/:id'`. 
+* The `patch '/models/:id'` controller action will find the instance of the model to update, using the `id` from `params`, update and save that instance. 
 
 ### Delete
 
-The delete part of CRUD is a little tricky. It doesn't get its own view page, but instead is implemented via a "delete button" on the show page of a given instance. This "delete button", however, isn't really a button, its a form! The form should send a `POST` request to `post '/models/:id/delete` and should contain only a "submit" button with a value of "delete". That way, it will appear as only a button to the user. Here's an example:
+The delete part of CRUD is a little tricky. It doesn't get its own view page, but instead is implemented via a "delete button" on the show page of a given instance. This "delete button", however, isn't really a button, its a form! The form should send a `DELETE` request to `delete '/models/:id/delete` and should contain only a "submit" button with a value of "delete". That way, it will appear as only a button to the user. Here's an example:
 
 ```html
 <form method="post" action="/models/<%=@model.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">
 <form>
 ```
+
+The hidden input field is important to note here. You'll need to include a similar line on any edit forms. This is how you can submit PATCH and DELETE requests via Sinatra. The form tag `method` attribute will be set to `post`, but the hidden input field sets it to `DELETE`.
+
+
 ### Conclusion
 
 Remember, the purpose of this reading is to help you understand which controller actions render which views, and which views have forms that send requests to which controller actions, as we implement CRUD. Check out the diagram below for the big picture:
