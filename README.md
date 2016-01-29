@@ -94,3 +94,5 @@ Remember, the purpose of this reading is to help you understand which controller
 
 
 
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-reading' title='Sinatra and Active Record CRUD'>Sinatra and Active Record CRUD</a> on Learn.co and start learning to code for free.</p>
