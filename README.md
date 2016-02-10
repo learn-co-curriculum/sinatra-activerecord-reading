@@ -11,8 +11,8 @@ We're familiar with how to preform the basic CRUD (Create, Read, Update, Delete)
 
 * Create: `Model.create`
 * Read: `Model.all`/`Model.find(id_number)`
-* Update: `model.update`
-* Delete: `model.destroy`
+* Update: `Model.update`
+* Delete: `Model.destroy`
 
 Now, let's take a look at how to build out a Sinatra app that allows a user to implement these actions through the interface of the web. The details of what code gets written in each controller action are left slightly vague––you're going to need to do some careful thinking for yourself when it comes to building this out later on. The purpose of this reading is to illustrate the connections between the various controller actions and views needed to implement CRUD. 
 
@@ -32,7 +32,7 @@ There are two ways in which we can read data. We may want to "read" or deliver t
 
 * The `get '/models'` controller action handles requests for *all* instances of a class. It should load up all of those instances and set them equal to an instance variable: `@models = Model.all`. Then, it renders the `index.erb` view page. 
 * The `index.erb` view page will use erb to render all of the instances stored in the `@models` instance variable. 
-* The `get '/models:id'` controller action handles requests for a given instance of your model. For example, if a user types in `www.yourwebsite.com/models/2`, this route will catch that request and get the `id` number, in this case `2`, from the params. It will then find the instance of the model with that id number and set it equal to an instance variable: `@model = Model.find(params[:id])`. Lastly, it will render the `show.erb` view page. 
+* The `get '/models/:id'` controller action handles requests for a given instance of your model. For example, if a user types in `www.yourwebsite.com/models/2`, this route will catch that request and get the `id` number, in this case `2`, from the params. It will then find the instance of the model with that id number and set it equal to an instance variable: `@model = Model.find(params[:id])`. Lastly, it will render the `show.erb` view page. 
 * The `show.erb` view page will use erb to render the `@model` object. 
 
 ### Update
@@ -64,7 +64,7 @@ The `MethodOverride` middleware will intercept every request sent and received b
 
 ### Delete
 
-The delete part of CRUD is a little tricky. It doesn't get its own view page, but instead is implemented via a "delete button" on the show page of a given instance. This "delete button", however, isn't really a button, its a form! The form should send a `DELETE` request to `delete '/models/:id/delete` and should contain only a "submit" button with a value of "delete". That way, it will appear as only a button to the user. Here's an example:
+The delete part of CRUD is a little tricky. It doesn't get its own view page, but instead is implemented via a "delete button" on the show page of a given instance. This "delete button", however, isn't really a button, it's a form! The form should send a `DELETE` request to `delete '/models/:id/delete` and should contain only a "submit" button with a value of "delete". That way, it will appear as only a button to the user. Here's an example:
 
 ```html
 <form method="post" action="/models/<%=@model.id%>/delete">
@@ -95,4 +95,4 @@ Remember, the purpose of this reading is to help you understand which controller
 
 
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-reading' title='Sinatra and Active Record CRUD'>Sinatra and Active Record CRUD</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-reading'>ActiveRecord in Sinatra</a> on Learn.co and start learning to code for free.</p>
