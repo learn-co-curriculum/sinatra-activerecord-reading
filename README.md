@@ -55,7 +55,7 @@ From there, you'll need to add a line to your form:
 
 edit.erb:
 ```html
-<form action="/models/:id" method="post">
+<form action="<%=@model.id%>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <input type="text" ...>
 </form>
