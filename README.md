@@ -79,6 +79,6 @@ The hidden input field is important to note here. This is how you can submit PAT
 
 Remember, the purpose of this reading is to help you understand which controller actions render which views, and which views have forms that send requests to which controller actions, as we implement CRUD. Check out the diagram below for the big picture:
 
-![](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-12-28%20at%2010.49.31%20AM.png)
+![](https://i.imgur.com/4o3Qtrv.png)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-activerecord-reading'>ActiveRecord in Sinatra</a> on Learn.co and start learning to code for free.</p>
