@@ -7,7 +7,7 @@
 
 ## Introduction
 
-By now you should be familiar with how to perform the basic CRUD (Create, Read, Update, Delete) actions using Active Record. Let's take a moment and review. For this example, we'll use the class name `Model` to stand in for whatever model your app is working with (`Post`, `Student`, `Song`, you name it).
+By now you should be familiar with how to perform the basic CRUD (Create, Read, Update, Delete) actions using Active Record. Let's take a moment and review. For this example, we'll use the class name `Model` to stand in for whatever model your app is working with (`Article`, `Student`, `Song`, you name it).
 
 * Create: `Model.create`
 * Read: `Model.all`/`Model.find(id_number)`
