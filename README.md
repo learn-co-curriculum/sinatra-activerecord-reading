@@ -22,7 +22,7 @@ Now, let's take a look at how to build a Sinatra app that allows a user to imple
 
 The "create" part of CRUD is implemented in Sinatra by building a route, or controller action, to render a form for creating a new instance of your model.
 
-* The `get '/model/new'` route is created as a block in your controller.  In this block, we can render an `.erb` file that containers our form.  In this case, we'll call it `new.erb`.
+* The `get '/model/new'` route is created as a block in your controller.  In this block, we can render an `.erb` file that contains our form.  In this case, we'll call it `new.erb`.
 * That form sends a `POST` request to another controller action, `post '/models'`. It is here that you place the code that extracts the form data from the `params` and uses it to create a new instance of your model class, something along the lines of  `Model.create(some_attribute: params[:some_attribute])`.
 
 ### Read
