@@ -66,10 +66,10 @@ The `MethodOverride` middleware will intercept every request sent and received b
 
 ### Delete
 
-The delete part of CRUD is a little tricky. It doesn't get its own view page but instead is implemented via a "delete button" on the show page of a given instance. This "delete button", however, isn't really a button; it's a form! The form should send a `DELETE` request to `delete '/models/:id/delete'` and should contain only a "submit" button with a value of "delete". That way, it will appear as only a button to the user. Here's an example:
+The delete part of CRUD is a little tricky. It doesn't get its own view page but instead is implemented via a "delete button" on the show page of a given instance. This "delete button", however, isn't really a button; it's a form! The form should send a `DELETE` request to `delete '/models/:id'` and should contain only a "submit" button with a value of "delete". That way, it will appear as only a button to the user. Here's an example:
 
 ```html
-<form method="post" action="/models/<%= @model.id %>/delete">
+<form method="post" action="/models/<%= @model.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="delete">
 </form>
