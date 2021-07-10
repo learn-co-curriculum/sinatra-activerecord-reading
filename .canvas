@@ -1,0 +1,6 @@
+---
+:lessons:
+- :id: 13205
+  :course_id: 355
+  :canvas_url: https://learning.flatironschool.com/courses/355/pages/sinatra-and-active-record-crud
+  :type: page
